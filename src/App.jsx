@@ -1,10 +1,13 @@
+import { ThemeProvider } from "./context/globalcontext"
+import Header from "./Header"
 
 function App() {
 
-
   return (
     <>
-      <h1>Titolo</h1>
+      <ThemeProvider>
+        <Header />
+      </ThemeProvider>
     </>
   )
 }
