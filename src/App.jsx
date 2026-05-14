@@ -1,5 +1,6 @@
 import { ThemeProvider } from "./context/globalcontext"
-import Header from "./Header"
+import Header from "./components/Header"
+import Main from "./components/Main"
 
 function App() {
 
@@ -7,6 +8,7 @@ function App() {
     <>
       <ThemeProvider>
         <Header />
+        <Main />
       </ThemeProvider>
     </>
   )
