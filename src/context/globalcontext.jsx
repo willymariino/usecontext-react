@@ -31,9 +31,20 @@ export function ThemeProvider({ children }) {
     function reducerTasks(state, action) {
         switch (action.type) {
             case "ADD":
-                return
+                return [
+                    ...state,
+                    {
+                        title: action.payload,
+                        description: "",
+                        isCompleted: false
+                    }
+                ]
             case "DELETE":
-                return
+                return [
+                    ...state.filter((task, index) => {
+                        return index !== action.payload
+                    })
+                ]
             case "CLOSED":
                 return
             case "OPEN":
@@ -41,13 +52,11 @@ export function ThemeProvider({ children }) {
             case "RESET":
                 return []
             case "TOGGLE":
-                console.log(tasks)
-                return
-                return {
-                    ...tasks?.map((task, index) => {
-                        return index == payload ? ({ ...task, isCompleted: !task.isCompleted }) : task
+                return [
+                    ...state.map((task, index) => {
+                        return index == action.payload ? ({ ...task, isCompleted: !task.isCompleted }) : task
                     })
-                }
+                ]
 
             default:
                 return state
